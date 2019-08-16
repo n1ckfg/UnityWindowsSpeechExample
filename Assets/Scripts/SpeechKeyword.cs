@@ -1,4 +1,8 @@
 ﻿// https://developer.microsoft.com/en-us/windows/mixed-reality/voice_input_in_unity
+// Keyword recognition is fastest and easiest if you know the commands you need in advance.
+// It's available in Windows 7, 8, 10, and on UWP devices like HoloLens.
+// It doesn't require internet access or any special permissions.
+// It's designed to run continually, listening for keywords.
 
 using System.Collections;
 using System.Collections.Generic;
@@ -11,16 +15,14 @@ public class SpeechKeyword : MonoBehaviour {
     public enum ConfidenceLevel { HIGH, MEDIUM, LOW };
     public ConfidenceLevel confidenceLevel = ConfidenceLevel.MEDIUM;
     public AudioSource sound;
-    public bool initOnStart = false;
+    public bool setupKeywordsOnStart = false;
 
     [HideInInspector] public Dictionary<string, System.Action> keywords = new Dictionary<string, System.Action>();
 
     private KeywordRecognizer keywordRecognizer;
     
     private void Start() {
-        if (initOnStart) {
-            setupKeywords();
-        }
+        if (setupKeywordsOnStart) setupKeywords();
     }
 
     private void KeywordRecognizer_OnPhraseRecognized(PhraseRecognizedEventArgs args) {
@@ -44,11 +46,19 @@ public class SpeechKeyword : MonoBehaviour {
 
         init();
     }
-    
+
     public void init() {
         keywordRecognizer = new KeywordRecognizer(keywords.Keys.ToArray(), (UnityEngine.Windows.Speech.ConfidenceLevel) confidenceLevel);
         keywordRecognizer.OnPhraseRecognized += KeywordRecognizer_OnPhraseRecognized;
+        startListening();
+    }
+
+    public void startListening() {
         keywordRecognizer.Start();
     }
-    
+
+    public void stopListening() {
+        keywordRecognizer.Stop();
+    }
+
 }

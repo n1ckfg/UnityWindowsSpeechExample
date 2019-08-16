@@ -5,16 +5,18 @@ using UnityEngine;
 public class SpeechKeyword_ColorChanger : MonoBehaviour
 {
 
-    public SpeechKeyword speech;
+    public Renderer ren;
 
+    private SpeechKeyword speech;
     private Material mat;
 
     private void Awake() {
-        mat = GetComponent<Renderer>().sharedMaterial;
+        speech = GetComponent<SpeechKeyword>();
+        mat = ren.sharedMaterial;
     }
 
     private void Start() {
-        mat.SetColor("_Color", new Color(0.5f, 0.5f, 0.5f));
+        mat.SetColor("_Color", Color.gray);
 
         setupKeywords();
     }
@@ -23,15 +25,15 @@ public class SpeechKeyword_ColorChanger : MonoBehaviour
         speech.keywords.Clear();
 
         speech.keywords.Add("red", () => {
-            mat.SetColor("_Color", new Color(1f, 0f, 0f));
+            mat.SetColor("_Color", Color.red);
         });
 
         speech.keywords.Add("green", () => {
-            mat.SetColor("_Color", new Color(0f, 1f, 0f));
+            mat.SetColor("_Color", Color.green);
         });
 
         speech.keywords.Add("blue", () => {
-            mat.SetColor("_Color", new Color(0f, 0f, 1f));
+            mat.SetColor("_Color", Color.blue);
         });
 
         speech.keywords.Add("orange", () => {
@@ -39,11 +41,15 @@ public class SpeechKeyword_ColorChanger : MonoBehaviour
         });
 
         speech.keywords.Add("yellow", () => {
-            mat.SetColor("_Color", new Color(1f, 1f, 0f));
+            mat.SetColor("_Color", Color.yellow);
         });
 
         speech.keywords.Add("pink", () => {
-            mat.SetColor("_Color", new Color(1f, 0f, 1f));
+            mat.SetColor("_Color", Color.magenta);
+        });
+
+        speech.keywords.Add("magenta", () => {
+            mat.SetColor("_Color", Color.magenta);
         });
 
         speech.keywords.Add("purple", () => {
@@ -51,23 +57,23 @@ public class SpeechKeyword_ColorChanger : MonoBehaviour
         });
 
         speech.keywords.Add("teal", () => {
-            mat.SetColor("_Color", new Color(0f, 1f, 1f));
+            mat.SetColor("_Color", Color.cyan);
         });
 
         speech.keywords.Add("cyan", () => {
-            mat.SetColor("_Color", new Color(0f, 1f, 1f));
+            mat.SetColor("_Color", Color.cyan);
         });
 
         speech.keywords.Add("white", () => {
-            mat.SetColor("_Color", new Color(1f, 1f, 1f));
+            mat.SetColor("_Color", Color.white);
         });
 
         speech.keywords.Add("black", () => {
-            mat.SetColor("_Color", new Color(0f, 0f, 0f));
+            mat.SetColor("_Color", Color.black);
         });
 
         speech.keywords.Add("gray", () => {
-            mat.SetColor("_Color", new Color(0.5f, 0.5f, 0.5f));
+            mat.SetColor("_Color", Color.gray);
         });
 
         speech.init();
