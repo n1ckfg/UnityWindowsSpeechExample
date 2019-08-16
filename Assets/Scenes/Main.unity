@@ -251,6 +251,7 @@ GameObject:
   - component: {fileID: 844279679}
   - component: {fileID: 844279678}
   - component: {fileID: 844279677}
+  - component: {fileID: 844279681}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -330,6 +331,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &844279681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 844279676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1819a2d473c9e2745965ae77c874fb1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speech: {fileID: 2143339542}
 --- !u!1 &1154692211
 GameObject:
   m_ObjectHideFlags: 0
@@ -510,8 +524,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3cdc173c3b221648ba0d4983cd34c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ren: {fileID: 844279678}
   sound: {fileID: 327657944}
+  initOnStart: 0
 --- !u!4 &2143339543
 Transform:
   m_ObjectHideFlags: 0
